@@ -1,15 +1,15 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
-@Entity('articles')
-export class Article {
+@Entity('users')
+export class User {
   @PrimaryGeneratedColumn()
   public id: number
 
-  @Column({ length: 255 })
-  public title: string
+  @Column()
+  public email: string
 
-  @Column({ type: 'text' })
-  public body: string
+  @Column()
+  public password: string
 
   @CreateDateColumn()
   public createdAt: Date

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Articles } from './articles.entity'
+import { Article } from './articles.entity'
 import { DeleteResult, Repository } from 'typeorm'
 import { ArticlesQuery } from './articles.query'
 import { CreateArticleRequest } from './create-article.request'
@@ -9,24 +9,24 @@ import { UpdateArticleRequest } from './update-article.request'
 @Injectable()
 export class ArticlesService {
   constructor (
-    @InjectRepository(Articles) private articlesRepository: Repository<Articles>
+    @InjectRepository(Article) private articlesRepository: Repository<Article>
   ) {}
 
-  public findAll (query: ArticlesQuery): Promise<Articles[]> {
+  public findAll (query: ArticlesQuery): Promise<Article[]> {
     return this.articlesRepository.find(query)
   }
 
-  public findOne (id: string): Promise<Articles> {
+  public findOne (id: string): Promise<Article> {
     return this.articlesRepository.findOne(id)
   }
 
-  public create (request: CreateArticleRequest): Promise<Articles> {
+  public create (request: CreateArticleRequest): Promise<Article> {
     const article = this.articlesRepository.create(request)
 
     return this.articlesRepository.save(article)
   }
 
-  async update (id: string, request: UpdateArticleRequest): Promise<Articles> {
+  async update (id: string, request: UpdateArticleRequest): Promise<Article> {
     let article = await this.articlesRepository.findOne(id)
 
     article = this.articlesRepository.merge(article, request)

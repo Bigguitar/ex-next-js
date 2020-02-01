@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common'
 import { ArticlesService } from './articles.service'
 import { ArticlesQuery } from './articles.query'
-import { Articles } from './articles.entity'
+import { Article } from './articles.entity'
 import { CreateArticleRequest } from './create-article.request'
 import { UpdateArticleRequest } from './update-article.request'
 
@@ -10,17 +10,17 @@ export class ArticlesController {
   constructor (private articlesService: ArticlesService) {}
 
   @Get('/')
-  public findAll (@Query() query: ArticlesQuery): Promise<Articles[]> {
+  public findAll (@Query() query: ArticlesQuery): Promise<Article[]> {
     return this.articlesService.findAll(query)
   }
 
   @Get(':id')
-  public findOne (@Param('id') id: string): Promise<Articles> {
+  public findOne (@Param('id') id: string): Promise<Article> {
     return this.articlesService.findOne(id)
   }
 
   @Post('/')
-  public create (@Body() request: CreateArticleRequest): Promise<Articles> {
+  public create (@Body() request: CreateArticleRequest): Promise<Article> {
     return this.articlesService.create(request)
   }
 
@@ -28,7 +28,7 @@ export class ArticlesController {
   public update (
     @Param('id') id: string,
     @Body() request: UpdateArticleRequest
-  ): Promise<Articles> {
+  ): Promise<Article> {
     return this.articlesService.update(id, request)
   }
 
