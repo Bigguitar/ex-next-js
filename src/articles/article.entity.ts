@@ -1,4 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity, JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm'
+import { Comment } from '../comments/comment.entity'
+import { Category } from '../categories/category.entity'
 
 @Entity('articles')
 export class Article {
@@ -16,4 +26,17 @@ export class Article {
 
   @UpdateDateColumn()
   public updatedAt: Date
+
+  @OneToMany(
+    () => Comment,
+    comment => comment.article,
+  )
+  public comments: Comment[]
+
+  @ManyToMany(
+    () => Category,
+    category => category.articles
+  )
+  @JoinTable()
+  public categories: Category[]
 }
