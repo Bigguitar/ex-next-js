@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Article } from './articles.entity'
+import { Article } from './article.entity'
 import { DeleteResult, Repository } from 'typeorm'
 import { ArticlesQuery } from './articles.query'
 import { CreateArticleRequest } from './create-article.request'

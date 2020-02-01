@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common'
 import { ArticlesService } from './articles.service'
 import { ArticlesQuery } from './articles.query'
-import { Article } from './articles.entity'
+import { Article } from './article.entity'
 import { CreateArticleRequest } from './create-article.request'
 import { UpdateArticleRequest } from './update-article.request'
 

@@ -4,12 +4,14 @@ import { AppService } from './app.service';
 import { ArticlesModule } from './articles/articles.module';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { UsersModule } from './users/users.module';
+import { AddressesModule } from './addresses/addresses.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     ArticlesModule,
-    UsersModule
+    UsersModule,
+    AddressesModule
   ],
   controllers: [AppController],
   providers: [AppService],
