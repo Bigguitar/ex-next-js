@@ -1,42 +1,43 @@
 import {
   Column,
   CreateDateColumn,
-  Entity, JoinTable,
+  Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from 'typeorm'
-import { Comment } from '../comments/comment.entity'
-import { Category } from '../categories/category.entity'
+} from "typeorm";
+import { Comment } from "../comments/comment.entity";
+import { Category } from "../categories/category.entity";
 
-@Entity('articles')
+@Entity("articles")
 export class Article {
   @PrimaryGeneratedColumn()
-  public id: number
+  public id: number;
 
   @Column({ length: 255 })
-  public title: string
+  public title: string;
 
-  @Column({ type: 'text' })
-  public body: string
+  @Column({ type: "text" })
+  public body: string;
 
   @CreateDateColumn()
-  public createdAt: Date
+  public createdAt: Date;
 
   @UpdateDateColumn()
-  public updatedAt: Date
+  public updatedAt: Date;
 
   @OneToMany(
     () => Comment,
-    comment => comment.article,
+    comment => comment.article
   )
-  public comments: Comment[]
+  public comments: Comment[];
 
   @ManyToMany(
     () => Category,
     category => category.articles
   )
   @JoinTable()
-  public categories: Category[]
+  public categories: Category[];
 }
