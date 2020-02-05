@@ -1,4 +1,4 @@
 export interface UpdateArticleRequest {
-  title?: string,
-  body?: string
+  title?: string;
+  body?: string;
 }

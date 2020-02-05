@@ -6,12 +6,12 @@ import {
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from "typeorm";
-import { Comment } from "../comments/comment.entity";
-import { Category } from "../categories/category.entity";
+  UpdateDateColumn,
+} from 'typeorm';
+import { Comment } from '../comments/comment.entity';
+import { Category } from '../categories/category.entity';
 
-@Entity("articles")
+@Entity('articles')
 export class Article {
   @PrimaryGeneratedColumn()
   public id: number;
@@ -19,7 +19,7 @@ export class Article {
   @Column({ length: 255 })
   public title: string;
 
-  @Column({ type: "text" })
+  @Column({ type: 'text' })
   public body: string;
 
   @CreateDateColumn()
@@ -30,13 +30,13 @@ export class Article {
 
   @OneToMany(
     () => Comment,
-    comment => comment.article
+    comment => comment.article,
   )
   public comments: Comment[];
 
   @ManyToMany(
     () => Category,
-    category => category.articles
+    category => category.articles,
   )
   @JoinTable()
   public categories: Category[];
