@@ -1,26 +1,33 @@
-import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { User } from '../users/user.entity'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { User } from '../users/user.entity';
 
 @Entity('addresses')
 export class Address {
   @PrimaryGeneratedColumn()
-  public id: number
+  public id: number;
 
   @Column()
-  public lat: string
+  public lat: string;
 
   @Column()
-  public lng: string
+  public lng: string;
 
   @CreateDateColumn()
-  public createdAt: Date
+  public createdAt: Date;
 
   @UpdateDateColumn()
-  public updatedAt: Date
+  public updatedAt: Date;
 
   @OneToOne(
     () => User,
-    user => user.address
+    user => user.address,
   )
-  public user: User
+  public user: User;
 }
