@@ -1,23 +1,30 @@
-import { Column, CreateDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { Article } from '../articles/article.entity'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Article } from '../articles/article.entity';
 
 @Entity('categories')
 export class Category {
   @PrimaryGeneratedColumn()
-  public id: number
+  public id: number;
 
   @Column()
-  public title: string
+  public title: string;
 
   @CreateDateColumn()
-  public createdAt: Date
+  public createdAt: Date;
 
   @UpdateDateColumn()
-  public updatedAt: Date
+  public updatedAt: Date;
 
   @ManyToMany(
     () => Article,
-    article => article.categories
+    article => article.categories,
   )
-  public articles: Article[]
+  public articles: Article[];
 }

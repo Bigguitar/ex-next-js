@@ -1,23 +1,30 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { Article } from '../articles/article.entity'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Article } from '../articles/article.entity';
 
 @Entity('comments')
 export class Comment {
   @PrimaryGeneratedColumn()
-  public id: number
+  public id: number;
 
   @Column({ type: 'text' })
-  public body: string
+  public body: string;
 
   @CreateDateColumn()
-  public createdAt: Date
+  public createdAt: Date;
 
   @UpdateDateColumn()
-  public updatedAt: Date
+  public updatedAt: Date;
 
   @ManyToOne(
     () => Article,
-    article => article.comments
+    article => article.comments,
   )
-  public article: Article
+  public article: Article;
 }

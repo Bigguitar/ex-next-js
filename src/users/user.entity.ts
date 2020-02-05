@@ -5,35 +5,35 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from 'typeorm'
-import { Address } from '../addresses/address.entity'
+  UpdateDateColumn,
+} from 'typeorm';
+import { Address } from '../addresses/address.entity';
 
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
-  public id: number
+  public id: number;
 
   @Column()
-  public email: string
+  public email: string;
 
   @Column()
-  public password: string
+  public password: string;
 
   @CreateDateColumn()
-  public createdAt: Date
+  public createdAt: Date;
 
   @UpdateDateColumn()
-  public updatedAt: Date
+  public updatedAt: Date;
 
   @Column({ nullable: true })
-  public addressId: number
+  public addressId: number;
 
   @OneToOne(
     () => Address,
     address => address.user,
-    { cascade: true }
+    { cascade: true },
   )
   @JoinColumn()
-  public address: Address
+  public address: Address;
 }

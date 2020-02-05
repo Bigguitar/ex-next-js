@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArticlesModule } from './articles/articles.module';
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AddressesModule } from './addresses/addresses.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -15,7 +15,7 @@ import { CommentsModule } from './comments/comments.module';
     UsersModule,
     AddressesModule,
     CategoriesModule,
-    CommentsModule
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
